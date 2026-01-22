@@ -6,6 +6,8 @@ These materialized views are designed to provide both sales and operations teams
 
 **Live Dashboard:** [View Attendance Dashboard](https://lockeroomgym.retool.com/embedded/public/c5016a63-5e65-4265-88bd-5fc97296761b)
 
+*Materialized views are pre-computed database tables that store the results of complex queries. Unlike regular views that calculate data on-the-fly, materialized views store the data physically, allowing for much faster query performance. The data in these views is refreshed automatically via a scheduled cron job (every Tuesday at 1:00 AM), so data will not update until the refresh automation runs.*
+
 ---
 
 ## 🔄 How Data Flows
@@ -35,7 +37,6 @@ flowchart TD
 3. **Gym Information**: Each class is automatically tagged with its location (BLIGH, BRIDGE, or COLLIN) on each upload via trigger function
 4. **Class Types**: Classes are automatically categorized (PERFORM, BOX, VO2, SQUAD) on each upload via trigger function
 
-> **Note:** These views are materialized views, meaning the data is pre-computed and stored for fast querying. The views refresh automatically via a scheduled cron job. Data will not update until the refresh automation runs at the scheduled time (every Tuesday at 1:00 AM).
 
 ---
 

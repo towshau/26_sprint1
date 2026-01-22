@@ -31,9 +31,9 @@ flowchart TD
 ### Data Sources
 
 1. **`member_daily_sessions_attended`**: Daily upload via CSV for the previous day's attendance data
-2. **System Settings**: Capacity limits and calculation parameters are stored in configuration
-3. **Gym Information**: Each class is automatically tagged with its location (BLIGH, BRIDGE, or COLLIN)
-4. **Class Types**: Classes are categorized (PERFORM, BOX, VO2, SQUAD)
+2. **`system_config`**: Supabase table storing capacity limits and calculation parameters used in all calculations
+3. **Gym Information**: Each class is automatically tagged with its location (BLIGH, BRIDGE, or COLLIN) on each upload via trigger function
+4. **Class Types**: Classes are automatically categorized (PERFORM, BOX, VO2, SQUAD) on each upload via trigger function
 
 > **Note:** These views are materialized views, meaning the data is pre-computed and stored for fast querying. The views refresh automatically via a scheduled cron job. Data will not update until the refresh automation runs at the scheduled time (every Tuesday at 1:00 AM).
 

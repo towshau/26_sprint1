@@ -4,6 +4,8 @@
 
 These materialized views are designed to provide both sales and operations teams with insights into member attendance patterns, enabling informed decision-making around selling new memberships and capacity expansion opportunities.
 
+**Live Dashboard:** [View Attendance Dashboard](https://lockeroomgym.retool.com/embedded/public/c5016a63-5e65-4265-88bd-5fc97296761b)
+
 ---
 
 ## 🔄 How Data Flows

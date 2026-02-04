@@ -144,3 +144,22 @@ Faster visibility into session attendance allows managers to spot at-risk client
 
 ---
 
+### Schedule Preferences (Collection, Heat Map, and Rolling Window)
+
+**What it is:** Schedule preferences are collected in the `schedule_preferences` table and surfaced in Retool via a **heat map** per coach. Coaches can now see their own preferences, and there is a **12-week rolling window** in which they can add or change preferences. Gym managers have been trained on the flow.
+
+**What's implemented:**
+- Preferences stored in `schedule_preferences` and mapped into Retool (heat map by coach).
+- Visibility **per coach** so individuals can see and manage their own preferences.
+- **12-week rolling window** for coaches to submit and update preferences.
+- Gym managers onboarded and using the system.
+
+**Benefits:**
+- **Perception of fairness** — Submitting and changing preferences is clear and visible, so the team feels the process is fair rather than opaque or favoring a few.
+- **Better visibility for managers** — Managers can see preferences in one place (e.g. heat map) and use that to balance the roster and set expectations.
+- **Scalability** — Less reliance on people "deep in the operational system"; the process can scale beyond a small number of power users.
+- **Admin can own schedule build** — Opens the door for an **admin team member** to do the heavy lifting for a **monthly schedule build**, instead of it staying with a narrow set of operators.
+- **Framework for communication** — Gives managers a clear basis to correct attitudes, set expectations, and maintain a **fair balance of preferences and coverage** across the team.
+
+---
+

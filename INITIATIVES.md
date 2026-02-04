@@ -148,6 +148,40 @@ Faster visibility into session attendance allows managers to spot at-risk client
 
 **What it is:** Schedule preferences are collected in the `schedule_preferences` table and surfaced in Retool via a **heat map** per coach. Coaches can now see their own preferences, and there is a **12-week rolling window** in which they can add or change preferences. Gym managers have been trained on the flow.
 
+**How the rolling 12-week window works (in Supabase):**
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  SCHEDULE PREFERENCES – ROLLING 12-WEEK WINDOW                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  1. PERIODS (when coaches can submit)                                        │
+│     Cron (every Monday 05:05)                                                 │
+│            │                                                                  │
+│            ▼                                                                  │
+│     generate_schedule_periods()  ──────►  schedule_periods                     │
+│     (lookahead 6w, 2-week blocks)        (week_start, week_end,               │
+│                                           submission_deadline)                │
+│                                                                              │
+│  2. COACHES SUBMIT PREFERENCES                                                │
+│     Retool (heat map / form)                                                  │
+│            │                                                                  │
+│            ▼                                                                  │
+│     schedule_preferences                                                      │
+│     (staff_id, period_id, block, preference_type, rank)                      │
+│            │                                                                  │
+│            │  trigger_sync_to_rolling (on INSERT)                              │
+│            ▼                                                                  │
+│     rolling_schedule_preferences                                              │
+│     (effective_date = period's week_start, end_date = effective_date + 12w)   │
+│                                                                              │
+│  3. RETOOL HEAT MAP                                                           │
+│     Reads schedule_preferences + schedule_periods (and/or rolling_*)          │
+│     to show each coach their preferences across the rolling window.           │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
 **What's implemented:**
 - Preferences stored in `schedule_preferences` and mapped into Retool (heat map by coach).
 - Visibility **per coach** so individuals can see and manage their own preferences.
